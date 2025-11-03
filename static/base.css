@@ -1,0 +1,12 @@
+body { margin: 0; font-family: sans-serif; }
+table { border-collapse: collapse; width: 100% }
+th, td { border: 1px solid #9b8a8a; padding: 6px; text-align: center; }
+button { margin-top: 10px; padding: 6px 12px; background-color: #3b3b3b; color: white; border: none; border-radius: 4px; }
+
+@media screen and (max-width: 412px) {
+  body { font-size: 16px; padding: 4px; }
+  table { font-size: 15px; }
+  th, td { padding: 4px 2px; }
+  .button-1 { justify-content: center; }
+  .icon-button { top: 0.5rem; right: 0.5rem; }
+}

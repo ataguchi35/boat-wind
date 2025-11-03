@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>設定画面</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='config.css') }}">
+</head>
+<body>
+<!-- 戻るボタン（右上） -->
+<div class="return-icon">
+  <a href="/" title="戻る">
+    <img src="/static/retrun_icon.png" alt="戻る">
+  </a>
+</div>
+
+<section class="time-slot-section">
+<h2>時間帯</h2>
+<form action="/save_time_slots" method="POST">
+  <table>
+    <thead>
+      <tr>
+        <th>時間帯</th>
+        <th>開始</th>
+        <th>終了</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for name, slot in time_slots.items() %}
+      <tr>
+        <td>
+          {{ name }}
+          <input type="hidden" name="slot_names" value="{{ loop.index }}">
+          <input type="hidden" name="slot_label_{{ loop.index }}" value="{{ name }}">
+        </td>
+        <td>
+          <input type="time" name="start_{{ loop.index }}" value="{{ slot.start }}">
+        </td>
+        <td>
+          <input type="time" name="end_{{ loop.index }}" value="{{ slot.end }}">
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="time-save">
+   <button type="submit">時間帯保存 </button>
+  </div>
+</form>
+
+<section class="site-config-section"></section>
+<h3>会場設定</h3>
+
+<form method="POST" action="/save_config">
+  <table>
+    <thead>
+     <tr>
+       <th>ID</th><th>会場名</th><th>表示</th><th>時間帯</th><th>状態</th>
+     </tr>
+    </thead>
+    <tbody> 
+    {% for site_id, site in site_config.items() %}
+    <tr>
+      <td>{{ site_id }}</td>
+      <td>{{ site.name }}</td>
+      <td>
+        <label class="switch">
+          <input type="checkbox" name="active" value="{{ site_id }}" {% if site.active %}checked{% endif %}>
+          <span class="slider round"></span>
+        </label>
+      </td>
+      <td>
+        <select name="time_slot_{{ site_id }}">
+          {% for slot_name in time_slots.keys() %}
+            <option value="{{ slot_name }}" {% if site.time_slot == slot_name %}selected{% endif %}>{{ slot_name }}</option>
+          {% endfor %}
+        </select>
+      </td>
+      <td>
+        <select name="manual_state_{{ site_id }}">
+          <option value="">自動</option>
+          <option value="Pause" {% if site.manual_state == "Pause" %}selected{% endif %}>Pause</option>
+          <option value="Stop" {% if site.manual_state == "Stop" %}selected{% endif %}>Stop</option>
+        </select>
+      </td>
+    </tr>
+    {% endfor %}
+   </tbody>
+  </table>
+  <div class="config-save">
+   <button type="submit">保存</button>
+  </div>
+</form>
+</section>
+</body>
+</html>

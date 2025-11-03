@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boat Wind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+  <div class="page-header">
+    <div class="header-content">
+      <span class="page-title">全国ボートレース場 風情報一覧</span>
+      <a href="/config" title="設定画面">
+       <img src="/static/buoy_icon.png" alt="設定" class="nav-icon">
+      </a>
+    </div>
+
+    <div class="header-controls">
+      <form method="POST" action="/refresh_data">
+        <input type="hidden" name="national_view" value="{{ request.args.get('national_view', 'false') }}">
+        <button type="submit" class="refresh-button">更新</button>
+      </form>
+      
+      <form method="GET" action="/" id="nationalViewForm">
+        <label class="switch">
+          <input type="checkbox" name="national_view" value="true"
+                 onchange="document.getElementById('nationalViewForm').submit()"
+                 {% if national_view %}checked{% endif %}>
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">全国表示</span>
+      </form>
+
+      <span class="timestamp">データ取得時刻:{{ timestamp }}</span>
+     </div>
+    </div>
+
+    <div class="page-reload">
+     <!-- 将来的に更新ボタンなどを配置 -->
+    </div>
+    <div style="table-container">
+     <table>
+         <thead>
+             <tr>
+                 <th>ID#</th>
+                 <th>会　場</th>
+                 <th>1st方向</th>
+                 <th>風向</th>
+                 <th>風速</th>
+                 <th>ゾーン</th>
+             </tr>
+         </thead>
+         <tbody>
+             {% for site in sites %}
+             <tr>
+                 <td>{{ site.id }}</td>
+                 <td>{{ site.name }}</td>
+                 <td>{{ site.direction }}</td>
+                 <td>{{ site.arrow }}</td>
+                 <td><span class="{{ site.color }}">{{ site.speed }}m</span></td>
+                 <td>{{ site.zone }}</td>
+             </tr>
+             {% endfor %}
+         </tbody>
+     </table>
+    </div>
+</body>
+</html>

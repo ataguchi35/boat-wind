@@ -1,0 +1,96 @@
+body {
+  background-color: #c3c3c3;
+}
+
+.time-slot-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+.time-slot-table th {
+  background-color: #f0f0f0;
+}
+
+.time-save {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}
+
+.config-save {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+}
+
+.return-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.return-icon a img {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.return-icon a img:hover {
+  transform: scale(1.1);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 22px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+thead tr {
+  background-color: #2a5db0;
+  color: white;
+}
+
+tbody tr:nth-child(even) { background-color: #78777c; }
+tbody tr:nth-child(odd) { background-color: #a4a4a5; }

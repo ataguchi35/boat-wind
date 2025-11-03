@@ -1,0 +1,146 @@
+{
+  "01": {
+    "name": "桐　生",
+    "time_slot": "ナイター",
+    "active": true,
+    "manual_state": ""
+  },
+  "02": {
+    "name": "戸　田",
+    "time_slot": "ディゲーム",
+    "active": true,
+    "manual_state": ""
+  },
+  "03": {
+    "name": "江戸川",
+    "time_slot": "ディゲーム",
+    "active": false,
+    "manual_state": ""
+  },
+  "04": {
+    "name": "平和島",
+    "time_slot": "ディゲーム",
+    "active": false,
+    "manual_state": ""
+  },
+  "05": {
+    "name": "多摩川",
+    "time_slot": "ディゲーム",
+    "active": true,
+    "manual_state": ""
+  },
+  "06": {
+    "name": "浜名湖",
+    "time_slot": "ランチタイム",
+    "active": true,
+    "manual_state": ""
+  },
+  "07": {
+    "name": "蒲　郡",
+    "time_slot": "ナイター",
+    "active": false,
+    "manual_state": ""
+  },
+  "08": {
+    "name": "常　滑",
+    "time_slot": "ディゲーム",
+    "active": true,
+    "manual_state": ""
+  },
+  "09": {
+    "name": "津",
+    "time_slot": "ディゲーム",
+    "active": false,
+    "manual_state": ""
+  },
+  "10": {
+    "name": "三　国",
+    "time_slot": "モーニング",
+    "active": false,
+    "manual_state": ""
+  },
+  "11": {
+    "name": "びわこ",
+    "time_slot": "ディゲーム",
+    "active": true,
+    "manual_state": ""
+  },
+  "12": {
+    "name": "住之江",
+    "time_slot": "ナイター",
+    "active": false,
+    "manual_state": ""
+  },
+  "13": {
+    "name": "尼　崎",
+    "time_slot": "ナイター",
+    "active": false,
+    "manual_state": ""
+  },
+  "14": {
+    "name": "鳴　門",
+    "time_slot": "モーニング",
+    "active": false,
+    "manual_state": ""
+  },
+  "15": {
+    "name": "丸　亀",
+    "time_slot": "ナイター",
+    "active": true,
+    "manual_state": ""
+  },
+  "16": {
+    "name": "児　島",
+    "time_slot": "ディゲーム",
+    "active": false,
+    "manual_state": ""
+  },
+  "17": {
+    "name": "宮　島",
+    "time_slot": "ディゲーム",
+    "active": true,
+    "manual_state": ""
+  },
+  "18": {
+    "name": "徳　山",
+    "time_slot": "モーニング",
+    "active": false,
+    "manual_state": ""
+  },
+  "19": {
+    "name": "下　関",
+    "time_slot": "ナイター",
+    "active": true,
+    "manual_state": ""
+  },
+  "20": {
+    "name": "若　松",
+    "time_slot": "ミッドナイト",
+    "active": true,
+    "manual_state": ""
+  },
+  "21": {
+    "name": "芦　屋",
+    "time_slot": "モーニング",
+    "active": false,
+    "manual_state": ""
+  },
+  "22": {
+    "name": "福　岡",
+    "time_slot": "ディゲーム",
+    "active": false,
+    "manual_state": ""
+  },
+  "23": {
+    "name": "唐　津",
+    "time_slot": "モーニング",
+    "active": false,
+    "manual_state": ""
+  },
+  "24": {
+    "name": "大　村",
+    "time_slot": "ナイター",
+    "active": true,
+    "manual_state": ""
+  }
+}
