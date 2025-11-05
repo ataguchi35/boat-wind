@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from boat_race_sites import boat_race_sites
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 from wind_utils import ( get_max_effect_angle, get_signed_deviation, classify_effect_zone, wind_deg_to_arrow, wind_speed_color )
 import json
 import requests
@@ -94,14 +94,14 @@ def index():
         site_id = info["id"]
 
         try:
-            #url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
-            #res = requests.get(url)
-            #data = res.json()
-            #wind_deg = data["wind"]["deg"]
-            #wind_speed = data["wind"]["speed"]
+            url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
+            res = requests.get(url)
+            data = res.json()
+            wind_deg = data["wind"]["deg"]
+            wind_speed = data["wind"]["speed"]
 
-            wind_deg = 45.0  # 北東風
-            wind_speed = 3.5  # 3.5m/s
+            #wind_deg = 45.0  # 北東風　デバッグ用
+            #wind_speed = 3.5  # 3.5m/s　デバッグ用
 
             max_effect_deg = get_max_effect_angle(angle)
             deviation = get_signed_deviation(wind_deg, max_effect_deg)
@@ -129,6 +129,11 @@ def index():
                 "color": "white",
                 "zone": f"取得失敗（{e}）"
             })
+
+    # UTC時刻を取得
+    utc_time = datetime.utcnow().replace(tzinfo=timezone.utc)
+    # JSTに変換
+    jst_time = utc_time.astimezone(timezone(timedelta(hours=9)))
 
     return render_template("index.html", sites=sites, timestamp=timestamp, national_view=national_view)
 
